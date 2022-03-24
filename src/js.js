@@ -69,7 +69,6 @@ class Game {
 }
 
 
-
 class Board {
     fieldsElements = document.querySelectorAll('.board__item');
     panel = document.querySelector('.panel');

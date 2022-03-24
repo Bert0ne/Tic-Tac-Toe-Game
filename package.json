@@ -1,0 +1,16 @@
+{
+  "name": "tic_tac_toe",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist"
+  },
+  "author": "RL",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.4.0",
+    "parcel": "^2.4.0",
+    "sass": "^1.49.9"
+  }
+}
