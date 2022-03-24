@@ -1,7 +1,12 @@
+import { Board } from './board'
+import  { EasyMode }  from './easymode'
+
 class Game {
     fields;
     activePlayer;
     gameActive;
+    doesAIMoveFirst = false;
+    currentMode = null; // null - pvp
 
     winningConditions = [
         [0,1,2],
@@ -15,7 +20,7 @@ class Game {
     ];
 
     constructor() {
-        this.board = new Board(this.handleItemClick, this.handleButtonClick);
+        this.board = new Board(this.handleItemClick, this.handleReset, this.handleModeChange);
         this.setDefaults();
     }
 
@@ -46,66 +51,56 @@ class Game {
         return this.fields.every(field => field !== ' ')
     };
 
-    handleButtonClick = () => {
-        this.setDefaults();
+    handleModeChange = (e) => {
+        this.currentMode = this.getModeClassForName(e.target.value);
+        this.setDefaults(false);
+        this.board.resetBoard()
+    }
+
+    getModeClassForName = (name) => {
+        if(name === "easy") return new EasyMode();
+        return null;
+
+    }
+
+    handleReset = () => {
+        this.setDefaults(!this.doesAIMoveFirst);
+        this.AIsFirstMove();
     };
+
+    AIsFirstMove = () => {
+        if(this.doesAIMoveFirst && this.currentMode !== null) {
+            this.makeMove(this.currentMode.getMove(this.fields, this.activePlayer));
+        }
+    }
 
     handleItemClick = (e) => {
         const {pos} = e.target.dataset;
         
         if(this.gameActive && this.fields[pos] === ' ') {
-            this.fields[pos] = this.activePlayer;
-            e.target.classList.add(`board__item--filled-${this.activePlayer}`);
-            this.validateGame();
-            this.activePlayer = this.activePlayer === 'X' ? 'O' : 'X';
+            this.makeMove(pos)
+
+            if(this.gameActive && this.currentMode !== null) {
+                this.makeMove(this.currentMode.getMove(this.fields, this.activePlayer));
+            }
         }
     } 
 
-    setDefaults = () => {
+    makeMove = position => {
+        this.fields[position] = this.activePlayer;
+        this.board.getFieldForPosition(position).classList.add(`board__item--filled-${this.activePlayer}`);
+        this.validateGame();
+        this.activePlayer = this.activePlayer === 'X' ? 'O' : 'X';
+    }
+
+    setDefaults = (doesAIMoveFirst) => {
         this.fields = Array.from(' '.repeat(9));
         this.activePlayer = 'X';
         this.gameActive = true;
+        this.doesAIMoveFirst = doesAIMoveFirst !== undefined ? doesAIMoveFirst : false;
     };
 }
 
 
-class Board {
-    fieldsElements = document.querySelectorAll('.board__item');
-    panel = document.querySelector('.panel');
-    button = document.querySelector('.reset-button');
-
-    constructor(onItemClick, onButtonClick) {
-        this.onButtonClick = onButtonClick;
-        this.button.addEventListener('click', this.handleButtonClick);
-
-        this.fieldsElements.forEach(field => {
-            field.addEventListener('click', onItemClick)
-        })
-    };
-
-    handleButtonClick = () => {
-        this.resetBoardClasses();
-        this.clearMessage();
-        this.onButtonClick(); 
-    };
-
-    resetBoardClasses = () => {
-        this.fieldsElements.forEach(field => {
-            field.classList.remove('board__item--filled-X', 'board__item--filled-O')
-        })
-    };
-
-    displayWinMessage = activePlayer => {
-        this.panel.innerHTML = `Wygrał ${activePlayer}`
-    };
-    
-    displayTieMessage = () => {
-        this.panel.innerHTML = 'Remis'
-    };
-    
-    clearMessage = () => {
-        this.panel.innerHTML = ''
-    };
-}
 
 let game = new Game()
