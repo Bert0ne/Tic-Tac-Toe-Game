@@ -7,15 +7,31 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet"> 
     <link rel="shortcut icon" href="#" type="image/x-icon">
-    <script defer="" src="/index.1e532f96.js"></script>
+    <script defer="" src="/index.c10c87bd.js"></script>
     <link rel="stylesheet" href="/index.b2d9cf43.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
 </head>
 <body>
+    <h1>Tic Tac Toe</h1>
+
     <div class="wrapper">
 
-        <p class="panel"></p>
+
+        <div class="game__mode">
+            <h3>Choose Game Mode:</h3>
+            
+            <select name="mode" id="mode-select" class="game__select">
+                <option value="pvp">PvP</option>
+                <option value="easy">PvC easy mode</option>
+                <option value="hard">PvC hard mode</option>
+            </select>
+        </div>
+
+        <div class="game__text">    
+            <p class="current-player" id="current-player"></p>
+            <p class="panel"></p>
+        </div>
 
         <div class="board">
             <div class="board__item" data-pos="0"></div>
