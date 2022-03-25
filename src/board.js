@@ -17,8 +17,11 @@ export class Board {
     };
 
     setCurrentPlayer = (player) => {
-        this.currentPlayerTag.innerText = `Player ${player} move`
+            this.currentPlayerTag.innerText = `Player ${player} move`;
     };
+    clearCurrentPlayerBoard = () => {
+        this.currentPlayerTag.innerText = ' ';
+    }
 
     handleButtonClick = () => {
         this.resetBoard();
@@ -46,10 +49,10 @@ export class Board {
     };
     
     displayTieMessage = () => {
-        this.panel.innerHTML = 'Draw'
+        this.panel.innerHTML = 'Draw';
     };
     
     clearMessage = () => {
-        this.panel.innerHTML = ''
+        this.panel.innerHTML = ' ';
     };
 }

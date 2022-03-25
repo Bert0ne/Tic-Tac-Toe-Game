@@ -526,7 +526,7 @@ class Game {
     currentMode = null;
     constructor(){
         this.board = new _board.Board(this.handleItemClick, this.handleReset, this.handleModeChange);
-        this.setDefaults();
+        this.board.handleButtonClick();
     }
     validateGame = ()=>{
         let gameWon = false;
@@ -581,7 +581,18 @@ class Game {
         this.board.getFieldForPosition(position).classList.add(`board__item--filled-${this.activePlayer}`);
         this.validateGame();
         this.activePlayer = this.activePlayer === 'X' ? 'O' : 'X';
-        this.board.setCurrentPlayer(this.activePlayer);
+        if (this.isBoardFull()) {
+            console.log('elo');
+            this.board.clearCurrentPlayerBoard();
+        }
+        if (!this.gameActive) {
+            console.log('elo');
+            this.board.clearCurrentPlayerBoard();
+        }
+        if (this.gameActive) {
+            console.log('elo 2');
+            this.board.setCurrentPlayer(this.activePlayer);
+        }
     };
     setDefaults = (doesAIMoveFirst)=>{
         this.fields = Array.from(' '.repeat(9));
@@ -614,6 +625,9 @@ class Board {
     setCurrentPlayer = (player)=>{
         this.currentPlayerTag.innerText = `Player ${player} move`;
     };
+    clearCurrentPlayerBoard = ()=>{
+        this.currentPlayerTag.innerText = ' ';
+    };
     handleButtonClick = ()=>{
         this.resetBoard();
         this.onButtonClick();
@@ -638,7 +652,7 @@ class Board {
         this.panel.innerHTML = 'Draw';
     };
     clearMessage = ()=>{
-        this.panel.innerHTML = '';
+        this.panel.innerHTML = ' ';
     };
 }
 

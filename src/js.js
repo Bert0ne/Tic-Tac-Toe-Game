@@ -11,7 +11,7 @@ class Game {
 
     constructor() {
         this.board = new Board(this.handleItemClick, this.handleReset, this.handleModeChange);
-        this.setDefaults();
+        this.board.handleButtonClick()
     }
 
     validateGame = () => {
@@ -31,6 +31,7 @@ class Game {
         if(gameWon) {
             this.gameActive = false;
             this.board.displayWinMessage(this.activePlayer) 
+
         } else if (this.isBoardFull()) {
             this.gameActive = false;
             this.board.displayTieMessage()
@@ -82,7 +83,18 @@ class Game {
         this.board.getFieldForPosition(position).classList.add(`board__item--filled-${this.activePlayer}`);
         this.validateGame();
         this.activePlayer = this.activePlayer === 'X' ? 'O' : 'X';
-        this.board.setCurrentPlayer(this.activePlayer)
+        if(this.isBoardFull()) {
+            console.log('elo');
+            this.board.clearCurrentPlayerBoard()
+        } 
+        if(!this.gameActive) {
+            console.log('elo');
+            this.board.clearCurrentPlayerBoard()
+        }
+        if(this.gameActive) {
+            console.log('elo 2');
+            this.board.setCurrentPlayer(this.activePlayer);     
+        }
     }
 
     setDefaults = (doesAIMoveFirst) => {
