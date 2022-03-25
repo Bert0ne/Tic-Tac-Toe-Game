@@ -64,7 +64,7 @@ h1 {
     display: grid;
     grid-template: repeat(3, 100px) / repeat(3, 100px);
     grid-gap: 10px;
-    padding: 10px;
+    position: relative;
 
     &__item {
         width: 100px;
@@ -150,6 +150,14 @@ h1 {
             }
         }
     } 
+}
+.winLine {
+    position: absolute;
+    width: 420px;
+    height: 5px;
+    color: gray;
+    z-index: 3;
+    background-color: red;
 }
 
 .reset-button {
