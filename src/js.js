@@ -76,7 +76,7 @@ class Game {
             if(this.gameActive && this.currentMode !== null) {
                 setTimeout(() => {
                     this.makeMove(this.currentMode.getMove(this.fields, this.activePlayer));
-                }, 1000);
+                }, 500);
             }
         }
     } 
