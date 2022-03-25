@@ -3,6 +3,7 @@ export class Board {
     panel = document.querySelector('.panel');
     button = document.querySelector('.reset-button');
     modeSelect = document.querySelector('#mode-select');
+    currentPlayerTag = document.getElementById('current-player')
 
 
     constructor(onItemClick, onButtonClick, onModeChange) {
@@ -15,6 +16,10 @@ export class Board {
         this.modeSelect.addEventListener('change', onModeChange)
     };
 
+    setCurrentPlayer = (player) => {
+        this.currentPlayerTag.innerText = `Player ${player} move`
+    };
+
     handleButtonClick = () => {
         this.resetBoard();
         this.onButtonClick(); 
@@ -23,6 +28,7 @@ export class Board {
     resetBoard = () => {
         this.resetBoardClasses();
         this.clearMessage();
+        this.setCurrentPlayer('X')
     }
 
     resetBoardClasses = () => {
@@ -36,11 +42,11 @@ export class Board {
     } 
 
     displayWinMessage = activePlayer => {
-        this.panel.innerHTML = `Wygrał ${activePlayer}`
+        this.panel.innerHTML = `Player ${activePlayer} Win`
     };
     
     displayTieMessage = () => {
-        this.panel.innerHTML = 'Remis'
+        this.panel.innerHTML = 'Draw'
     };
     
     clearMessage = () => {

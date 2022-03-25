@@ -24,6 +24,12 @@ body {
   font-weight: 700;
 }
 
+.current-player {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 30px;
+}
+
 .board {
   grid-gap: 10px;
   border: 2px solid gray;

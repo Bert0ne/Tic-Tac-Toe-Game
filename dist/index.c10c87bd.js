@@ -516,62 +516,22 @@ function hmrAcceptRun(bundle, id) {
 },{}],"jenyj":[function(require,module,exports) {
 var _board = require("./board");
 var _easymode = require("./easymode");
+var _hardmode = require("./hardmode");
+var _winningConditions = require("./winningConditions");
 class Game {
     fields;
     activePlayer;
     gameActive;
     doesAIMoveFirst = false;
     currentMode = null;
-    winningConditions = [
-        [
-            0,
-            1,
-            2
-        ],
-        [
-            3,
-            4,
-            5
-        ],
-        [
-            6,
-            7,
-            8
-        ],
-        [
-            0,
-            3,
-            6
-        ],
-        [
-            1,
-            4,
-            7
-        ],
-        [
-            2,
-            5,
-            8
-        ],
-        [
-            0,
-            4,
-            8
-        ],
-        [
-            6,
-            4,
-            2
-        ]
-    ];
     constructor(){
         this.board = new _board.Board(this.handleItemClick, this.handleReset, this.handleModeChange);
         this.setDefaults();
     }
     validateGame = ()=>{
         let gameWon = false;
-        for(let i = 0; i <= this.winningConditions.length - 1; i++){
-            const [posA, posB, posC] = this.winningConditions[i];
+        for(let i = 0; i <= _winningConditions.winningConditions.length - 1; i++){
+            const [posA, posB, posC] = _winningConditions.winningConditions[i];
             const value1 = this.fields[posA];
             const value2 = this.fields[posB];
             const value3 = this.fields[posC];
@@ -599,6 +559,7 @@ class Game {
     };
     getModeClassForName = (name)=>{
         if (name === "easy") return new _easymode.EasyMode();
+        if (name === "hard") return new _hardmode.HardMode();
         return null;
     };
     handleReset = ()=>{
@@ -620,6 +581,7 @@ class Game {
         this.board.getFieldForPosition(position).classList.add(`board__item--filled-${this.activePlayer}`);
         this.validateGame();
         this.activePlayer = this.activePlayer === 'X' ? 'O' : 'X';
+        this.board.setCurrentPlayer(this.activePlayer);
     };
     setDefaults = (doesAIMoveFirst)=>{
         this.fields = Array.from(' '.repeat(9));
@@ -630,7 +592,7 @@ class Game {
 }
 let game = new Game();
 
-},{"./board":"9x7Jv","./easymode":"1PTTe"}],"9x7Jv":[function(require,module,exports) {
+},{"./board":"9x7Jv","./easymode":"1PTTe","./hardmode":"lhhSQ","./winningConditions":"bhQpH"}],"9x7Jv":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Board", ()=>Board
@@ -640,6 +602,7 @@ class Board {
     panel = document.querySelector('.panel');
     button = document.querySelector('.reset-button');
     modeSelect = document.querySelector('#mode-select');
+    currentPlayerTag = document.getElementById('current-player');
     constructor(onItemClick, onButtonClick, onModeChange){
         this.onButtonClick = onButtonClick;
         this.button.addEventListener('click', this.handleButtonClick);
@@ -648,6 +611,9 @@ class Board {
         });
         this.modeSelect.addEventListener('change', onModeChange);
     }
+    setCurrentPlayer = (player)=>{
+        this.currentPlayerTag.innerText = `Player ${player} move`;
+    };
     handleButtonClick = ()=>{
         this.resetBoard();
         this.onButtonClick();
@@ -655,6 +621,7 @@ class Board {
     resetBoard = ()=>{
         this.resetBoardClasses();
         this.clearMessage();
+        this.setCurrentPlayer('X');
     };
     resetBoardClasses = ()=>{
         this.fieldsElements.forEach((field)=>{
@@ -665,10 +632,10 @@ class Board {
         return this.fieldsElements[position];
     };
     displayWinMessage = (activePlayer)=>{
-        this.panel.innerHTML = `Wygrał ${activePlayer}`;
+        this.panel.innerHTML = `Player ${activePlayer} Win`;
     };
     displayTieMessage = ()=>{
-        this.panel.innerHTML = 'Remis';
+        this.panel.innerHTML = 'Draw';
     };
     clearMessage = ()=>{
         this.panel.innerHTML = '';
@@ -719,6 +686,79 @@ class EasyMode {
         return freeNumb[randomPositionIndex];
     };
 }
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lhhSQ":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "HardMode", ()=>HardMode
+);
+var _winningConditions = require("./winningConditions");
+class HardMode {
+    getMove = (fields, player)=>{
+        for(let i = 0; i <= _winningConditions.winningConditions.length - 1; i++){
+            const [posA, posB, posC] = _winningConditions.winningConditions[i];
+            const value1 = fields[posA];
+            const value2 = fields[posB];
+            const value3 = fields[posC];
+            if (value1 === value2 && value1 !== ' ' && value3 === ' ') return posC;
+            if (value1 === value3 && value1 !== ' ' && value2 === ' ') return posB;
+            if (value2 === value3 && value2 !== ' ' && value1 === ' ') return posA;
+        }
+        let freeNumb = Object.entries(fields).filter((el)=>el[1] == ' '
+        ).map((el)=>el[0]
+        );
+        const randomPositionIndex = Math.floor(Math.random() * freeNumb.length);
+        return freeNumb[randomPositionIndex];
+    };
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./winningConditions":"bhQpH"}],"bhQpH":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "winningConditions", ()=>winningConditions
+);
+const winningConditions = [
+    [
+        0,
+        1,
+        2
+    ],
+    [
+        3,
+        4,
+        5
+    ],
+    [
+        6,
+        7,
+        8
+    ],
+    [
+        0,
+        3,
+        6
+    ],
+    [
+        1,
+        4,
+        7
+    ],
+    [
+        2,
+        5,
+        8
+    ],
+    [
+        0,
+        4,
+        8
+    ],
+    [
+        6,
+        4,
+        2
+    ]
+];
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["glqNg","jenyj"], "jenyj", "parcelRequirecd0f")
 

@@ -1,23 +1,13 @@
 import { Board } from './board'
 import  { EasyMode }  from './easymode'
-
+import  { HardMode }  from './hardmode'
+import { winningConditions } from './winningConditions'
 class Game {
     fields;
     activePlayer;
     gameActive;
     doesAIMoveFirst = false;
     currentMode = null; // null - pvp
-
-    winningConditions = [
-        [0,1,2],
-        [3,4,5],
-        [6,7,8],
-        [0,3,6],
-        [1,4,7],
-        [2,5,8],
-        [0,4,8],
-        [6,4,2]
-    ];
 
     constructor() {
         this.board = new Board(this.handleItemClick, this.handleReset, this.handleModeChange);
@@ -27,8 +17,8 @@ class Game {
     validateGame = () => {
         let gameWon = false;
     
-        for(let i = 0; i<= this.winningConditions.length -1; i++) {
-            const [posA, posB, posC] = this.winningConditions[i];
+        for(let i = 0; i<= winningConditions.length -1; i++) {
+            const [posA, posB, posC] = winningConditions[i];
             const value1 = this.fields[posA];
             const value2 = this.fields[posB];
             const value3 = this.fields[posC];
@@ -59,6 +49,7 @@ class Game {
 
     getModeClassForName = (name) => {
         if(name === "easy") return new EasyMode();
+        if(name === "hard") return new HardMode();
         return null;
 
     }
@@ -91,6 +82,7 @@ class Game {
         this.board.getFieldForPosition(position).classList.add(`board__item--filled-${this.activePlayer}`);
         this.validateGame();
         this.activePlayer = this.activePlayer === 'X' ? 'O' : 'X';
+        this.board.setCurrentPlayer(this.activePlayer)
     }
 
     setDefaults = (doesAIMoveFirst) => {

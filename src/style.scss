@@ -27,6 +27,12 @@ body {
     font-weight: 700;
 }
 
+.current-player {
+    font-size: 30px;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
 .board {
     display: grid;
     grid-template: repeat(3, 100px) / repeat(3, 100px);
