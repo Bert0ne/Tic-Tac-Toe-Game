@@ -73,14 +73,11 @@ h1 {
         border: 1px solid gray;
         transition: all 0.2s linear;
         position: relative;
-
-        &:hover {
-            background-color: #ddd;
-            border-color: lightgray;
-            cursor: pointer;
-        };
+        cursor: pointer;
 
         &--filled-X {
+            z-index: 2;
+
             &::after, &::before {
                 content: '';
                 position: absolute;
@@ -89,8 +86,6 @@ h1 {
                 top: 50%;
                 left: 0;
                 background-color: $color-xo;
-
-
             }
 
             &::before {
@@ -101,21 +96,58 @@ h1 {
                 transform: translateY(-50%) rotate(45deg);
             }
 
+            &--H {
+                z-index: 1;  
 
+                &::after, &::before {
+                    content: '';
+                    position: absolute;
+                    height: 5px;
+                    width: 100%;
+                    top: 50%;
+                    left: 0;
+                    background-color: rgba($color-xo, 0.5);  
+                }
+    
+                &::before {
+                    transform: translateY(-50%) rotate(-45deg);
+                }
+    
+                &::after {
+                    transform: translateY(-50%) rotate(45deg);
+                }
+            }
         }
 
-        &--filled-O::before {
-            position: absolute;
-            content: '';
-            border-radius: 50%;
-            border: 5px solid $color-xo;
-            top: 50%;
-            left: 50%;
-            height: 80px;
-            width: 80px;
-            transform: translate(-50%,-50%);
+        &--filled-O {
+            z-index: 2;     
 
+            &::before {
+                position: absolute;
+                content: '';
+                border-radius: 50%;
+                border: 5px solid $color-xo;
+                top: 50%;
+                left: 50%;
+                height: 80px;
+                width: 80px;
+                transform: translate(-50%,-50%);   
+            }
+            &--H {
+                z-index: 1;
 
+                &::before {
+                    position: absolute;
+                    content: '';
+                    border-radius: 50%;
+                    border: 5px solid rgba($color-xo, 0.5);
+                    top: 50%;
+                    left: 50%;
+                    height: 80px;
+                    width: 80px;
+                    transform: translate(-50%,-50%);        
+                }
+            }
         }
     } 
 }

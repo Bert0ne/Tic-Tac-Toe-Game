@@ -525,7 +525,7 @@ class Game {
     doesAIMoveFirst = false;
     currentMode = null;
     constructor(){
-        this.board = new _board.Board(this.handleItemClick, this.handleReset, this.handleModeChange, this.hoverItem);
+        this.board = new _board.Board(this.handleItemClick, this.handleReset, this.handleModeChange, this.hoverItemOn, this.hoverItemOff);
         this.board.handleButtonClick();
     }
     validateGame = ()=>{
@@ -576,14 +576,21 @@ class Game {
             if (this.gameActive && this.currentMode !== null) this.makeMove(this.currentMode.getMove(this.fields, this.activePlayer));
         }
     };
-    hoverItem = (e)=>{
-        console.log(e.target);
+    hoverItemOn = (e)=>{
         const pos = e.target;
-        pos.classList.add(`board__item--filled-${this.activePlayer}`);
+        if (pos.classList.contains('board__item--filled-X') || pos.classList.contains(`board__item--filled-O`)) return;
+        else pos.classList.add(`board__item--filled-${this.activePlayer}--H`);
+    };
+    hoverItemOff = (e)=>{
+        const pos = e.target;
+        pos.classList.remove(`board__item--filled-X--H`);
+        pos.classList.remove(`board__item--filled-O--H`);
     };
     makeMove = (position)=>{
         this.fields[position] = this.activePlayer;
         this.board.getFieldForPosition(position).classList.add(`board__item--filled-${this.activePlayer}`);
+        this.board.getFieldForPosition(position).classList.remove(`board__item--filled-X--H`);
+        this.board.getFieldForPosition(position).classList.remove(`board__item--filled-O--H`);
         this.validateGame();
         this.activePlayer = this.activePlayer === 'X' ? 'O' : 'X';
         if (this.isBoardFull()) this.board.clearCurrentPlayerBoard();
@@ -610,7 +617,7 @@ class Board {
     button = document.querySelector('.reset-button');
     modeSelect = document.querySelector('#mode-select');
     currentPlayerTag = document.getElementById('current-player');
-    constructor(onItemClick, onButtonClick, onModeChange, hoverItem){
+    constructor(onItemClick, onButtonClick, onModeChange, hoverItemOn, hoverItemOff){
         this.onButtonClick = onButtonClick;
         this.button.addEventListener('click', this.handleButtonClick);
         this.fieldsElements.forEach((field)=>{
@@ -618,7 +625,10 @@ class Board {
         });
         this.modeSelect.addEventListener('change', onModeChange);
         this.fieldsElements.forEach((el)=>{
-            el.addEventListener('mouseover', hoverItem);
+            el.addEventListener('mouseover', hoverItemOn);
+        });
+        this.fieldsElements.forEach((el)=>{
+            el.addEventListener('mouseleave', hoverItemOff);
         });
     }
     setCurrentPlayer = (player)=>{

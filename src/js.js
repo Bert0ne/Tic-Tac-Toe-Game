@@ -10,7 +10,7 @@ class Game {
     currentMode = null; // null - pvp
 
     constructor() {
-        this.board = new Board(this.handleItemClick, this.handleReset, this.handleModeChange, this.hoverItem);
+        this.board = new Board(this.handleItemClick, this.handleReset, this.handleModeChange, this.hoverItemOn, this.hoverItemOff);
         this.board.handleButtonClick()
     }
 
@@ -78,15 +78,28 @@ class Game {
         }
     } 
 
-    hoverItem = (e) => {
-        console.log(e.target);
+    hoverItemOn = (e) => {
         const pos = e.target
-        pos.classList.add(`board__item--filled-${this.activePlayer}--H`)
+        if(pos.classList.contains('board__item--filled-X') || pos.classList.contains(`board__item--filled-O`)) {
+            return 
+        } else {
+            pos.classList.add(`board__item--filled-${this.activePlayer}--H`)
+        }
+    }
+    hoverItemOff = (e) => {
+        const pos = e.target
+        pos.classList.remove(`board__item--filled-X--H`);
+        pos.classList.remove(`board__item--filled-O--H`);
+
     }
 
     makeMove = position => {
         this.fields[position] = this.activePlayer;
+        
         this.board.getFieldForPosition(position).classList.add(`board__item--filled-${this.activePlayer}`);
+        this.board.getFieldForPosition(position).classList.remove(`board__item--filled-X--H`);
+        this.board.getFieldForPosition(position).classList.remove(`board__item--filled-O--H`);
+
         this.validateGame();
         this.activePlayer = this.activePlayer === 'X' ? 'O' : 'X';
         

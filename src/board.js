@@ -6,7 +6,7 @@ export class Board {
     currentPlayerTag = document.getElementById('current-player')
 
 
-    constructor(onItemClick, onButtonClick, onModeChange, hoverItem) {
+    constructor(onItemClick, onButtonClick, onModeChange, hoverItemOn, hoverItemOff) {
         this.onButtonClick = onButtonClick;
         this.button.addEventListener('click', this.handleButtonClick);
 
@@ -17,7 +17,11 @@ export class Board {
         this.modeSelect.addEventListener('change', onModeChange);
 
         this.fieldsElements.forEach(el => {
-            el.addEventListener('mouseover', hoverItem)
+            el.addEventListener('mouseover', hoverItemOn)
+        });
+
+        this.fieldsElements.forEach(el => {
+            el.addEventListener('mouseleave', hoverItemOff)
         })
     };
 
