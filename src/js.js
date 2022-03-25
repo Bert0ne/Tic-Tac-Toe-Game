@@ -25,6 +25,7 @@ class Game {
     
             if(value1 != ' ' && value1 === value2 && value1 === value3) {
                 gameWon = true;
+                this.board.renderWinLine(gameWon, i)
                 break;
             } 
         }
@@ -95,10 +96,9 @@ class Game {
 
     makeMove = position => {
         this.fields[position] = this.activePlayer;
-        
+
         this.board.getFieldForPosition(position).classList.add(`board__item--filled-${this.activePlayer}`);
-        this.board.getFieldForPosition(position).classList.remove(`board__item--filled-X--H`);
-        this.board.getFieldForPosition(position).classList.remove(`board__item--filled-O--H`);
+        this.board.getFieldForPosition(position).classList.remove(`board__item--filled-${this.activePlayer}--H`);
 
         this.validateGame();
         this.activePlayer = this.activePlayer === 'X' ? 'O' : 'X';
@@ -119,6 +119,7 @@ class Game {
         this.activePlayer = 'X';
         this.gameActive = true;
         this.doesAIMoveFirst = doesAIMoveFirst !== undefined ? doesAIMoveFirst : false;
+        this.board.renderWinLine(false);
     };
 }
 
