@@ -2,4 +2,4 @@
 
 ## With two mode AI
 
-[DEMO]()                    
+[DEMO](tictactoe-game-rl.netlify.app)                    
