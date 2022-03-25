@@ -1,18 +1,18 @@
 4174
-75/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/src/js.js1648191266808369990 0
-80/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/src/style.scss1648196645340138181 0
-78/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/src/board.js1648196358967602746 0
-81/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/src/easymode.js1648149400146093785 0
-81/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/src/hardmode.js1648190131952697879 0
-69/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/src1648189193313374500 1
+75/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/src/js.js1648205529309703013 0
+80/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/src/style.scss1648205503276964965 0
+78/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/src/board.js1648204176655024554 0
+81/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/src/easymode.js1648203021249948445 0
+81/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/src/hardmode.js1648203091087950779 0
+69/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/src1648203116368675600 1
 78/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/package.json1648137121368117053 0
-76/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/index.html1648196268876959900 0
+76/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/index.html1648205503992985260 0
 76/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/.gitignore1648137119200056405 0
-88/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/dist/index.c10c87bd.js1648196645492142753 0
-81/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/dist/index.html1648196645492142753 0
-89/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/dist/index.b2d9cf43.css1648196645492142753 0
+88/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/dist/index.c10c87bd.js1648205491548632567 0
+81/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/dist/index.html1648203021437953835 0
+89/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/dist/index.b2d9cf43.css1648205503412968820 0
 93/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/dist/index.2cdaf7bc.css.map1648137119216056853 0
-92/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/dist/index.1e532f96.js.map1648139190987615406 0
+92/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/dist/index.1e532f96.js.map1648202985252916361 0
 98/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/path-type/readme.md1648137121240113472 0
 97/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/path-type/index.js1648137121240113472 0
 99/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/is-glob/package.json1648137120968105863 0
@@ -235,7 +235,7 @@
 92/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/escalade/sync1648137120936104968 1
 97/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/escalade/readme.md1648137120936104968 0
 100/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/escalade/package.json1648137120936104968 0
-93/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/dist/index.b2d9cf43.css.map1648196645492142753 0
+93/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/dist/index.b2d9cf43.css.map1648205503412968820 0
 102/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/escalade/dist/index.mjs1648137120932104856 0
 101/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/escalade/dist/index.js1648137120932104856 0
 92/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/escalade/dist1648137120932104856 1
@@ -1405,7 +1405,7 @@
 112/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/entities/lib/encode-trie.d.ts.map1648137120928104744 0
 113/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/xxhash-wasm/esm/xxhash-wasm.js.map1648137121360116829 0
 112/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/weak-lru-cache/tests/benchmark.js1648137121356116718 0
-92/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/dist/index.c10c87bd.js.map1648196645500142994 0
+92/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/dist/index.c10c87bd.js.map1648205491548632567 0
 90/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/xxhash-wasm1648137121360116829 1
 119/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/@swc/helpers/lib/_array_without_holes.js1648137120720098925 0
 114/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/@parcel/transformer-postcss/LICENSE1648137120648096912 0
@@ -1611,7 +1611,7 @@
 126/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/caniuse-lite/data/features/css-logical-props.js1648137120772100380 0
 110/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/caniuse-lite/data/regions/TV.js1648137120852102617 0
 94/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/source-map/dist1648137121296115039 1
-65/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk1648137121368117053 1
+65/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk1648203021249948445 1
 104/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/@parcel/utils/src/glob.js1648137120684097918 0
 128/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/@parcel/source-map/parcel_sourcemap_node/build.rs1648137119584067147 0
 101/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/resolve-from/readme.md1648137121252113808 0
@@ -2606,7 +2606,7 @@
 104/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/@parcel/codeframe/LICENSE1648137119232057300 0
 91/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/svgo/LICENSE1648137121300115151 0
 110/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/caniuse-lite/data/regions/TM.js1648137120852102617 0
-88/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/dist/index.1e532f96.js1648139190987615406 0
+88/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/dist/index.1e532f96.js1648202985252916361 0
 128/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/lmdb/dependencies/lmdb/libraries/liblmdb/mtest5.c1648137120988106422 0
 130/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/@parcel/transformer-react-refresh-wrap/package.json1648137120652097022 0
 106/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/@parcel/transformer-raw/src1648137120652097022 1
@@ -2928,7 +2928,7 @@
 122/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/caniuse-lite/data/features/server-timing.js1648137120812101499 0
 110/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/caniuse-lite/data/regions/LU.js1648137120840102282 0
 108/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/@parcel/workers/lib/Handle.js1648137120712098702 0
-90/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/src/winningConditions.js1648189295031274541 0
+90/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/src/winningConditions.js1648203021249948445 0
 124/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/caniuse-lite/data/features/css-placeholder.js1648137120772100380 0
 105/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/@parcel/graph/lib/Graph.js1648137119376061328 0
 97/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/msgpackr/README.md1648137121216112801 0
@@ -3274,7 +3274,7 @@
 131/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/react-refresh/cjs/react-refresh-babel.development.js1648137121248113696 0
 118/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/@parcel/core/src/ParcelConfig.schema.js1648137119268058308 0
 105/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/@parcel/core/src/worker.js1648137119276058532 0
-70/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/dist1648196645500142994 1
+70/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/dist1648205503412968820 1
 101/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/ordered-binary/LICENSE1648137121236113361 0
 110/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/@parcel/optimizer-image/LICENSE1648137119416062448 0
 104/home/robert/Pulpit/GIT/5. Execise Projects/JS/Kółko i Krzyżyk/node_modules/@parcel/core/src/types.js1648137119276058532 0

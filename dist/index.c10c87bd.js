@@ -525,7 +525,7 @@ class Game {
     doesAIMoveFirst = false;
     currentMode = null;
     constructor(){
-        this.board = new _board.Board(this.handleItemClick, this.handleReset, this.handleModeChange);
+        this.board = new _board.Board(this.handleItemClick, this.handleReset, this.handleModeChange, this.hoverItem);
         this.board.handleButtonClick();
     }
     validateGame = ()=>{
@@ -576,23 +576,19 @@ class Game {
             if (this.gameActive && this.currentMode !== null) this.makeMove(this.currentMode.getMove(this.fields, this.activePlayer));
         }
     };
+    hoverItem = (e)=>{
+        console.log(e.target);
+        const pos = e.target;
+        pos.classList.add(`board__item--filled-${this.activePlayer}`);
+    };
     makeMove = (position)=>{
         this.fields[position] = this.activePlayer;
         this.board.getFieldForPosition(position).classList.add(`board__item--filled-${this.activePlayer}`);
         this.validateGame();
         this.activePlayer = this.activePlayer === 'X' ? 'O' : 'X';
-        if (this.isBoardFull()) {
-            console.log('elo');
-            this.board.clearCurrentPlayerBoard();
-        }
-        if (!this.gameActive) {
-            console.log('elo');
-            this.board.clearCurrentPlayerBoard();
-        }
-        if (this.gameActive) {
-            console.log('elo 2');
-            this.board.setCurrentPlayer(this.activePlayer);
-        }
+        if (this.isBoardFull()) this.board.clearCurrentPlayerBoard();
+        if (!this.gameActive) this.board.clearCurrentPlayerBoard();
+        if (this.gameActive) this.board.setCurrentPlayer(this.activePlayer);
     };
     setDefaults = (doesAIMoveFirst)=>{
         this.fields = Array.from(' '.repeat(9));
@@ -614,13 +610,16 @@ class Board {
     button = document.querySelector('.reset-button');
     modeSelect = document.querySelector('#mode-select');
     currentPlayerTag = document.getElementById('current-player');
-    constructor(onItemClick, onButtonClick, onModeChange){
+    constructor(onItemClick, onButtonClick, onModeChange, hoverItem){
         this.onButtonClick = onButtonClick;
         this.button.addEventListener('click', this.handleButtonClick);
         this.fieldsElements.forEach((field)=>{
             field.addEventListener('click', onItemClick);
         });
         this.modeSelect.addEventListener('change', onModeChange);
+        this.fieldsElements.forEach((el)=>{
+            el.addEventListener('mouseover', hoverItem);
+        });
     }
     setCurrentPlayer = (player)=>{
         this.currentPlayerTag.innerText = `Player ${player} move`;

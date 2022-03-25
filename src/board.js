@@ -6,14 +6,19 @@ export class Board {
     currentPlayerTag = document.getElementById('current-player')
 
 
-    constructor(onItemClick, onButtonClick, onModeChange) {
+    constructor(onItemClick, onButtonClick, onModeChange, hoverItem) {
         this.onButtonClick = onButtonClick;
         this.button.addEventListener('click', this.handleButtonClick);
 
         this.fieldsElements.forEach(field => {
             field.addEventListener('click', onItemClick)
+        });
+
+        this.modeSelect.addEventListener('change', onModeChange);
+
+        this.fieldsElements.forEach(el => {
+            el.addEventListener('mouseover', hoverItem)
         })
-        this.modeSelect.addEventListener('change', onModeChange)
     };
 
     setCurrentPlayer = (player) => {

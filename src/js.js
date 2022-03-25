@@ -10,7 +10,7 @@ class Game {
     currentMode = null; // null - pvp
 
     constructor() {
-        this.board = new Board(this.handleItemClick, this.handleReset, this.handleModeChange);
+        this.board = new Board(this.handleItemClick, this.handleReset, this.handleModeChange, this.hoverItem);
         this.board.handleButtonClick()
     }
 
@@ -78,6 +78,12 @@ class Game {
         }
     } 
 
+    hoverItem = (e) => {
+        console.log(e.target);
+        const pos = e.target
+        pos.classList.add(`board__item--filled-${this.activePlayer}--H`)
+    }
+
     makeMove = position => {
         this.fields[position] = this.activePlayer;
         this.board.getFieldForPosition(position).classList.add(`board__item--filled-${this.activePlayer}`);
@@ -85,15 +91,12 @@ class Game {
         this.activePlayer = this.activePlayer === 'X' ? 'O' : 'X';
         
         if(this.isBoardFull()) {
-            console.log('elo');
             this.board.clearCurrentPlayerBoard()
         } 
         if(!this.gameActive) {
-            console.log('elo');
             this.board.clearCurrentPlayerBoard()
         }
         if(this.gameActive) {
-            console.log('elo 2');
             this.board.setCurrentPlayer(this.activePlayer);     
         }
     }

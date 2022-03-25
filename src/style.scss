@@ -82,13 +82,15 @@ h1 {
 
         &--filled-X {
             &::after, &::before {
-            content: '';
-            position: absolute;
-            height: 5px;
-            width: 100%;
-            top: 50%;
-            left: 0;
-            background-color: $color-xo;
+                content: '';
+                position: absolute;
+                height: 5px;
+                width: 100%;
+                top: 50%;
+                left: 0;
+                background-color: $color-xo;
+
+
             }
 
             &::before {
@@ -98,6 +100,8 @@ h1 {
             &::after {
                 transform: translateY(-50%) rotate(45deg);
             }
+
+
         }
 
         &--filled-O::before {
@@ -110,6 +114,8 @@ h1 {
             height: 80px;
             width: 80px;
             transform: translate(-50%,-50%);
+
+
         }
     } 
 }
