@@ -1,7 +1,7 @@
 {
   "name": "tic_tac_toe",
   "version": "1.0.0",
-  "description": "",
+  "description": "Tic Tac Toe Game with two mode of AI",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html --dist-dir ./dist"
